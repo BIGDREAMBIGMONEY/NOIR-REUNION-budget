@@ -7,165 +7,81 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #f5f4f0;
-    --bg2: #ffffff;
-    --bg3: #eeede9;
-    --text: #1a1a1a;
-    --text2: #666;
-    --border: rgba(0,0,0,0.12);
-    --border2: rgba(0,0,0,0.2);
-    --green: #3a8c2f;
-    --amber: #b86e00;
-    --red: #c0392b;
-    --blue: #185fa5;
-    --gold: #b8860b;
-    --radius: 10px;
-    --radius-lg: 14px;
+    --bg: #f5f4f0; --bg2: #ffffff; --bg3: #eeede9;
+    --text: #1a1a1a; --text2: #666;
+    --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.2);
+    --green: #2e7d32; --amber: #b86e00; --red: #c0392b;
+    --blue: #185fa5; --purple: #7b2d8b; --gold: #f5c518;
+    --radius: 10px; --radius-lg: 14px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #111;
-      --bg2: #1e1e1e;
-      --bg3: #2a2a2a;
-      --text: #f0ede6;
-      --text2: #999;
-      --border: rgba(255,255,255,0.1);
-      --border2: rgba(255,255,255,0.2);
-      --green: #4caf50;
-      --amber: #f5a623;
-      --red: #e05252;
-      --blue: #5b9bd5;
-      --gold: #f5c518;
+      --bg: #111; --bg2: #1e1e1e; --bg3: #2a2a2a;
+      --text: #f0ede6; --text2: #999;
+      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.2);
+      --green: #4caf50; --amber: #f5a623; --red: #e05252;
+      --blue: #5b9bd5; --purple: #ba68c8; --gold: #f5c518;
     }
   }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    min-height: 100vh;
-    padding: 0;
-  }
-  header {
-    background: #0a0a0a;
-    padding: 18px 20px 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  header h1 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #f5c518;
-    letter-spacing: 0.5px;
-  }
-  header p { font-size: 12px; color: #888; margin-top: 1px; }
-  .badge-date {
-    margin-left: auto;
-    font-size: 11px;
-    background: #222;
-    color: #f5c518;
-    padding: 4px 10px;
-    border-radius: 99px;
-    border: 1px solid #333;
-  }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+
+  header { background: #0a0a0a; padding: 16px 20px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 10; }
+  header h1 { font-size: 18px; font-weight: 700; color: #f5c518; }
+  header p { font-size: 11px; color: #888; margin-top: 1px; }
+  .badge { margin-left: auto; font-size: 11px; background: #222; color: #f5c518; padding: 4px 10px; border-radius: 99px; border: 1px solid #333; }
 
   .main { padding: 16px; max-width: 600px; margin: 0 auto; }
 
-  /* CAMEMBERT ZONE */
-  .donut-zone {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
+  /* BUDGET TOTAL HERO */
+  .hero {
+    background: #0a0a0a;
     border-radius: var(--radius-lg);
     padding: 20px 16px;
     margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    text-align: center;
   }
-  .donut-zone svg { flex-shrink: 0; }
-  .legend { flex: 1; display: flex; flex-direction: column; gap: 9px; }
-  .legend-row { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .hero-label { font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .hero-val { font-size: 38px; font-weight: 700; color: #f5c518; }
+  .hero-sub { font-size: 12px; color: #666; margin-top: 4px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .hero-item { background: #1a1a1a; border-radius: var(--radius); padding: 10px 12px; }
+  .hero-item-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .hero-item-val { font-size: 18px; font-weight: 700; }
+
+  /* CAMEMBERT */
+  .donut-zone { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 18px 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 18px; }
+  .legend { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .legend-row { display: flex; align-items: center; gap: 8px; font-size: 12px; }
   .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .legend-name { flex: 1; color: var(--text); }
-  .legend-val { font-weight: 600; font-size: 13px; color: var(--text); }
+  .legend-val { font-weight: 600; color: var(--text); }
+  .legend-pct { font-size: 10px; color: var(--text2); margin-left: 2px; }
 
-  /* METRICS */
+  /* MÉTRIQUES */
   .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .metric {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-  }
-  .metric label { font-size: 11px; color: var(--text2); display: block; margin-bottom: 5px; letter-spacing: 0.3px; }
-  .metric .val { font-size: 20px; font-weight: 700; }
-  .metric .sub { font-size: 11px; color: var(--text2); margin-top: 3px; }
+  .metric { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 13px; }
+  .metric label { font-size: 11px; color: var(--text2); display: block; margin-bottom: 4px; }
+  .metric .val { font-size: 18px; font-weight: 700; }
+  .metric .sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
 
   /* SECTION */
-  .section {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 16px;
-    margin-bottom: 14px;
-  }
-  .section-head {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text2);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 0.5px solid var(--border);
-  }
+  .section { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 14px; }
+  .section-head { font-size: 11px; font-weight: 600; color: var(--text2); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 0.5px solid var(--border); }
 
-  /* FORM AJOUT */
-  .add-form { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; margin-bottom: 12px; }
-  .add-form input, .add-form select {
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: var(--radius);
-    border: 0.5px solid var(--border2);
-    background: var(--bg3);
-    color: var(--text);
-    width: 100%;
+  /* FORM */
+  .add-form2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .add-form { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-bottom: 12px; }
+  .add-form input, .add-form select, .add-form2 input, .add-form2 select {
+    font-size: 13px; padding: 8px 10px; border-radius: var(--radius);
+    border: 0.5px solid var(--border2); background: var(--bg3); color: var(--text); width: 100%;
   }
-  .add-form2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-  .btn-add {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: var(--radius);
-    border: 0.5px solid var(--border2);
-    background: #0a0a0a;
-    color: #f5c518;
-    cursor: pointer;
-    white-space: nowrap;
-  }
+  .btn-add { font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: #0a0a0a; color: #f5c518; cursor: pointer; white-space: nowrap; }
   .btn-add:hover { background: #222; }
 
-  /* LISTE DÉPENSES */
+  /* LISTE */
   .dep-list { display: flex; flex-direction: column; gap: 7px; }
-  .dep-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--bg3);
-    border-radius: var(--radius);
-    padding: 10px 12px;
-    font-size: 13px;
-  }
-  .cat-pill {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 99px;
-    flex-shrink: 0;
-  }
+  .dep-item { display: flex; align-items: center; gap: 8px; background: var(--bg3); border-radius: var(--radius); padding: 10px 12px; font-size: 13px; }
+  .cat-pill { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 99px; flex-shrink: 0; }
   .cat-travaux { background: #fff3cd; color: #7a4f00; }
   .cat-equipement { background: #dbeafe; color: #1e3a5f; }
   @media (prefers-color-scheme: dark) {
@@ -174,69 +90,33 @@
   }
   .dep-name { flex: 1; color: var(--text); }
   .dep-amt { font-weight: 600; color: var(--red); }
-  .btn-del {
-    background: none;
-    border: none;
-    color: var(--text2);
-    cursor: pointer;
-    font-size: 15px;
-    padding: 0 2px;
-    line-height: 1;
-  }
+  .btn-del { background: none; border: none; color: var(--text2); cursor: pointer; font-size: 15px; padding: 0 2px; }
   .btn-del:hover { color: var(--red); }
   .empty-msg { font-size: 13px; color: var(--text2); text-align: center; padding: 8px 0; }
 
   /* CREDITS */
-  .credit-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 0.5px solid var(--border);
-  }
+  .credit-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
   .credit-item:last-of-type { border-bottom: none; }
-  .credit-lbl { font-size: 13px; color: var(--text); }
+  .credit-lbl { font-size: 13px; color: var(--text); font-weight: 500; }
   .credit-sub { font-size: 11px; color: var(--text2); margin-top: 1px; }
-  .credit-amt { font-weight: 600; font-size: 13px; color: var(--red); }
+  .credit-amt { font-weight: 700; font-size: 14px; }
 
-  .slider-wrap { margin-top: 14px; }
-  .slider-lbl {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text2);
-    margin-bottom: 6px;
-  }
+  /* SLIDER */
+  .slider-wrap { margin-top: 14px; padding-top: 12px; border-top: 0.5px solid var(--border); }
+  .slider-lbl { display: flex; justify-content: space-between; font-size: 12px; color: var(--text2); margin-bottom: 6px; }
   .slider-lbl span { font-weight: 600; color: var(--text); }
   input[type=range] { width: 100%; accent-color: #f5c518; }
-  .progress-bg { height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; margin-top: 8px; }
-  .progress-fill { height: 100%; border-radius: 3px; background: var(--red); transition: width 0.4s; }
-  .credit-info { font-size: 12px; color: var(--text2); margin-top: 6px; }
-
-  /* FOOTER */
-  .footer-card {
-    background: #0a0a0a;
-    border-radius: var(--radius-lg);
-    padding: 18px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 32px;
-  }
-  .footer-card .lbl { font-size: 13px; color: #888; }
-  .footer-card .val { font-size: 26px; font-weight: 700; }
+  .progress-bg { height: 5px; background: var(--bg3); border-radius: 3px; overflow: hidden; margin-top: 7px; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
+  .credit-info { font-size: 11px; color: var(--text2); margin-top: 5px; }
 
   /* ALERTE */
-  .alerte {
-    background: #1a0808;
-    border: 1px solid var(--red);
-    border-radius: var(--radius);
-    padding: 10px 14px;
-    font-size: 13px;
-    color: #e88;
-    margin-bottom: 14px;
-    display: none;
-  }
+  .alerte { background: #1a0808; border: 1px solid var(--red); border-radius: var(--radius); padding: 10px 14px; font-size: 13px; color: #e88; margin-bottom: 14px; display: none; }
+
+  /* FOOTER */
+  .footer-card { background: #0a0a0a; border-radius: var(--radius-lg); padding: 18px 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+  .footer-card .lbl { font-size: 13px; color: #888; }
+  .footer-card .val { font-size: 26px; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -246,16 +126,33 @@
     <h1>NOIR RÉUNION</h1>
     <p>Tableau de bord — Budget &amp; Dépenses</p>
   </div>
-  <div class="badge-date" id="badge-date"></div>
+  <div class="badge" id="badge-date"></div>
 </header>
 
 <div class="main">
 
   <div class="alerte" id="alerte">⚠️ Attention — ton capital disponible est bas !</div>
 
+  <!-- HERO BUDGET TOTAL -->
+  <div class="hero">
+    <div class="hero-label">Budget total disponible</div>
+    <div class="hero-val" id="hero-total">41 000 €</div>
+    <div class="hero-sub">Capital perso + Crédits obtenus</div>
+    <div class="hero-grid">
+      <div class="hero-item">
+        <div class="hero-item-label">💰 Capital perso</div>
+        <div class="hero-item-val" style="color:#f5c518">25 000 €</div>
+      </div>
+      <div class="hero-item">
+        <div class="hero-item-label">🏦 Crédits obtenus</div>
+        <div class="hero-item-val" style="color:#5b9bd5">16 000 €</div>
+      </div>
+    </div>
+  </div>
+
   <!-- CAMEMBERT -->
   <div class="donut-zone">
-    <svg id="donut" width="110" height="110" viewBox="0 0 110 110">
+    <svg id="donut" width="120" height="120" viewBox="0 0 120 120">
       <title>Répartition budget Noir Réunion</title>
     </svg>
     <div class="legend" id="legend"></div>
@@ -268,7 +165,7 @@
   <div class="section">
     <div class="section-head">Dépenses travaux &amp; équipements</div>
     <div class="add-form2">
-      <input id="dep-name" type="text" placeholder="Description de la dépense" />
+      <input id="dep-name" type="text" placeholder="Description" />
       <select id="dep-cat">
         <option value="travaux">Travaux</option>
         <option value="equipement">Équipement</option>
@@ -281,76 +178,69 @@
     <div class="dep-list" id="dep-list"></div>
   </div>
 
-  <!-- CRÉDITS -->
+  <!-- CRÉDIT 1 -->
   <div class="section">
     <div class="section-head">Crédit 1 — Parcours Confiance</div>
     <div class="credit-item">
       <div>
         <div class="credit-lbl">Parcours Confiance</div>
-        <div class="credit-sub">36 mois · taux 5,50% · départ 05/06/2026</div>
+        <div class="credit-sub">36 mois · taux 5,50% · départ 05/06/2026 · total 8 000 €</div>
       </div>
-      <div>
-        <div class="credit-amt" style="text-align:right">274,80 € mois 1</div>
-        <div style="font-size:11px;color:var(--text2);text-align:right">puis 244,24 €/mois</div>
+      <div style="text-align:right">
+        <div class="credit-amt" style="color:var(--red)">274,80 € mois 1</div>
+        <div style="font-size:11px;color:var(--text2)">puis 244,24 €/mois</div>
       </div>
     </div>
     <div class="slider-wrap">
-      <div class="slider-lbl">
-        Mensualités payées
-        <span id="pc-mois-out">0 mois</span>
-      </div>
+      <div class="slider-lbl">Mensualités payées <span id="pc-out">0 mois</span></div>
       <input type="range" min="0" max="36" value="0" step="1" id="slider-pc" oninput="updatePC(this.value)" />
-      <div class="progress-bg"><div class="progress-fill" id="pc-bar" style="width:0%"></div></div>
+      <div class="progress-bg"><div class="progress-fill" id="pc-bar" style="width:0%;background:var(--red)"></div></div>
       <div class="credit-info" id="pc-info">Remboursé : 0 € · Restant dû : 8 000 €</div>
     </div>
   </div>
 
+  <!-- CRÉDIT 2 -->
   <div class="section">
     <div class="section-head">Crédit 2 — Réseau Initiative (Prêt d'Honneur)</div>
     <div class="credit-item">
       <div>
         <div class="credit-lbl">Réseau Initiative — Prêt d'Honneur Bpifrance</div>
-        <div class="credit-sub">33 mois · taux 0% · différé avr/mai/juin 2026</div>
+        <div class="credit-sub">33 mois · taux 0% · différé avr/mai/juin 2026 · total 8 000 €</div>
       </div>
-      <div>
-        <div class="credit-amt" style="text-align:right">242,42 €/mois</div>
-        <div style="font-size:11px;color:var(--text2);text-align:right">1ère éch. juillet 2026</div>
+      <div style="text-align:right">
+        <div class="credit-amt" style="color:var(--purple)">242,42 €/mois</div>
+        <div style="font-size:11px;color:var(--text2)">1ère éch. juillet 2026</div>
       </div>
     </div>
     <div class="slider-wrap">
-      <div class="slider-lbl">
-        Mensualités payées
-        <span id="ri-mois-out">0 mois</span>
-      </div>
+      <div class="slider-lbl">Mensualités payées <span id="ri-out">0 mois</span></div>
       <input type="range" min="0" max="33" value="0" step="1" id="slider-ri" oninput="updateRI(this.value)" />
-      <div class="progress-bg"><div class="progress-fill" id="ri-bar" style="width:0%;background:#b86e00"></div></div>
+      <div class="progress-bg"><div class="progress-fill" id="ri-bar" style="width:0%;background:var(--purple)"></div></div>
       <div class="credit-info" id="ri-info">Remboursé : 0 € · Restant dû : 8 000 €</div>
     </div>
   </div>
 
-  <!-- TOTAL -->
+  <!-- CAPITAL RESTANT -->
   <div class="footer-card">
     <div class="lbl">Capital restant disponible</div>
-    <div class="val" id="capital-final" style="color:#4caf50">25 000 €</div>
+    <div class="val" id="capital-final" style="color:#4caf50">41 000 €</div>
   </div>
 
 </div>
 
 <script>
-const CAPITAL = 25000;
-// Parcours Confiance : mois 1 = 274.80€, mois 2-36 = 244.24€
-const PC_MOIS1 = 274.80;
-const PC_AUTRES = 244.24;
-const PC_DUREE = 36;
-// Réseau Initiative : différé 3 mois (juil-sept 2026), puis 242.42€ x 33 mois
-const RI_MENSUALITE = 242.42;
-const RI_DUREE = 33;
+const PERSO = 25000;
+const CREDIT_PC = 8000;
+const CREDIT_RI = 8000;
+const TOTAL = PERSO + CREDIT_PC + CREDIT_RI;
+const PC_M1 = 274.80, PC_MN = 244.24, PC_MAX = 36;
+const RI_MN = 242.42, RI_MAX = 33;
 
 let deps = JSON.parse(localStorage.getItem('nr_deps') || 'null') || [
   { id: 1, name: 'Carrelage sol cuisine', cat: 'travaux', amt: 452 },
-  { id: 2, name: 'Installation EDF', cat: 'edf', amt: 1100 },
+  { id: 2, name: 'Installation EDF', cat: 'travaux', amt: 1100 },
 ];
-let nextId = JSON.parse(localStorage.getItem('nr_nextid') || '3');
+let nextId = parseInt(localStorage.getItem('nr_nextid') || '3');
 let moisPC = parseInt(localStorage.getItem('nr_mois_pc') || '0');
 let moisRI = parseInt(localStorage.getItem('nr_mois_ri') || '0');
 
@@ -362,26 +252,25 @@ function save() {
 }
 
 function fmt(n) {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.round(n));
+  return new Intl.NumberFormat('fr-FR', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(Math.round(n));
 }
 
-function totalDep() { return deps.reduce((s, d) => s + d.amt, 0); }
-function totalTravaux() { return deps.filter(d => d.cat === 'travaux' || d.cat === 'edf').reduce((s, d) => s + d.amt, 0); }
-function totalEquip() { return deps.filter(d => d.cat === 'equipement').reduce((s, d) => s + d.amt, 0); }
+function totalDep() { return deps.reduce((s,d) => s+d.amt, 0); }
+function totalCat(c) { return deps.filter(d=>d.cat===c).reduce((s,d) => s+d.amt, 0); }
 
-function creditPayePC() {
+function payePC() {
   if (moisPC === 0) return 0;
-  if (moisPC === 1) return PC_MOIS1;
-  return PC_MOIS1 + (moisPC - 1) * PC_AUTRES;
+  if (moisPC === 1) return PC_M1;
+  return PC_M1 + (moisPC - 1) * PC_MN;
 }
-function creditPayeRI() { return Math.min(moisRI * RI_MENSUALITE, 8000); }
-function creditPayeTotal() { return creditPayePC() + creditPayeRI(); }
+function payeRI() { return Math.min(moisRI * RI_MN, CREDIT_RI); }
+function totalPaye() { return payePC() + payeRI(); }
 
-function capitalReste() { return CAPITAL - totalDep() - creditPayeTotal(); }
-function pct() { return Math.max(0, Math.min(100, Math.round((capitalReste() / (CAPITAL + 16000)) * 100))); }
+function capitalReste() { return TOTAL - totalDep() - totalPaye(); }
+function pctReste() { return Math.max(0, Math.min(100, Math.round((capitalReste() / TOTAL) * 100))); }
 
 function colorForPct(p) {
-  if (p > 55) return '#3a8c2f';
+  if (p > 55) return '#2e7d32';
   if (p > 25) return '#b86e00';
   return '#c0392b';
 }
@@ -394,15 +283,13 @@ function addDep() {
   deps.push({ id: nextId++, name, cat, amt });
   document.getElementById('dep-name').value = '';
   document.getElementById('dep-amt').value = '';
-  save();
-  render();
+  save(); render();
 }
 
 function delDep(id) {
   if (!confirm('Supprimer cette dépense ?')) return;
   deps = deps.filter(d => d.id !== id);
-  save();
-  render();
+  save(); render();
 }
 
 function updatePC(v) { moisPC = parseInt(v); save(); render(); }
@@ -411,121 +298,129 @@ function updateRI(v) { moisRI = parseInt(v); save(); render(); }
 function drawDonut(segs) {
   const svg = document.getElementById('donut');
   svg.innerHTML = '<title>Répartition budget Noir Réunion</title>';
-  const cx = 55, cy = 55, R = 46, ri = 28;
-  const total = segs.reduce((s, sg) => s + sg.val, 0);
+  const cx=60, cy=60, R=52, ri=32;
+  const total = segs.reduce((s,sg) => s+sg.val, 0);
   if (total <= 0) return;
-  let angle = -Math.PI / 2;
+  let angle = -Math.PI/2;
   segs.forEach(sg => {
     if (sg.val <= 0) return;
-    const sweep = (sg.val / total) * Math.PI * 2;
-    const safe = Math.min(sweep, Math.PI * 2 - 0.001);
-    const x1 = cx + R * Math.cos(angle), y1 = cy + R * Math.sin(angle);
-    const x2 = cx + R * Math.cos(angle + safe), y2 = cy + R * Math.sin(angle + safe);
-    const xi1 = cx + ri * Math.cos(angle), yi1 = cy + ri * Math.sin(angle);
-    const xi2 = cx + ri * Math.cos(angle + safe), yi2 = cy + ri * Math.sin(angle + safe);
-    const large = safe > Math.PI ? 1 : 0;
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', `M${x1},${y1} A${R},${R} 0 ${large},1 ${x2},${y2} L${xi2},${yi2} A${ri},${ri} 0 ${large},0 ${xi1},${yi1} Z`);
-    path.setAttribute('fill', sg.color);
-    svg.appendChild(path);
+    const sweep = Math.min((sg.val/total)*Math.PI*2, Math.PI*2-0.001);
+    const x1=cx+R*Math.cos(angle), y1=cy+R*Math.sin(angle);
+    const x2=cx+R*Math.cos(angle+sweep), y2=cy+R*Math.sin(angle+sweep);
+    const xi1=cx+ri*Math.cos(angle), yi1=cy+ri*Math.sin(angle);
+    const xi2=cx+ri*Math.cos(angle+sweep), yi2=cy+ri*Math.sin(angle+sweep);
+    const large = sweep>Math.PI?1:0;
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',`M${x1},${y1} A${R},${R} 0 ${large},1 ${x2},${y2} L${xi2},${yi2} A${ri},${ri} 0 ${large},0 ${xi1},${yi1} Z`);
+    p.setAttribute('fill', sg.color);
+    svg.appendChild(p);
     angle += sweep;
   });
-  const p = pct();
-  const col = colorForPct(p);
-  const t1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-  t1.setAttribute('x', cx); t1.setAttribute('y', cy - 3);
-  t1.setAttribute('text-anchor', 'middle'); t1.setAttribute('font-size', '15');
-  t1.setAttribute('font-weight', '700'); t1.setAttribute('fill', col);
-  t1.textContent = p + '%';
-  const t2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-  t2.setAttribute('x', cx); t2.setAttribute('y', cy + 12);
-  t2.setAttribute('text-anchor', 'middle'); t2.setAttribute('font-size', '9');
-  t2.setAttribute('fill', '#888');
+  const p2 = pctReste();
+  const col = colorForPct(p2);
+  const t1 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t1.setAttribute('x',cx); t1.setAttribute('y',cy-2);
+  t1.setAttribute('text-anchor','middle'); t1.setAttribute('font-size','16');
+  t1.setAttribute('font-weight','700'); t1.setAttribute('fill',col);
+  t1.textContent = p2+'%';
+  const t2 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t2.setAttribute('x',cx); t2.setAttribute('y',cy+13);
+  t2.setAttribute('text-anchor','middle'); t2.setAttribute('font-size','10');
+  t2.setAttribute('fill','#888');
   t2.textContent = 'restant';
   svg.appendChild(t1); svg.appendChild(t2);
 }
 
 function render() {
   const cr = capitalReste();
-  const p = pct();
+  const p = pctReste();
   const col = colorForPct(p);
   const tDep = totalDep();
-  const tTrav = totalTravaux();
-  const tEquip = totalEquip();
-  const tCreditPC = creditPayePC();
-  const tCreditRI = creditPayeRI();
-  const tCredit = creditPayeTotal();
-  const restePC = Math.max(0, 8000 - tCreditPC);
-  const resteRI = Math.max(0, 8000 - tCreditRI);
+  const tTrav = totalCat('travaux');
+  const tEquip = totalCat('equipement');
+  const tPC = payePC();
+  const tRI = payeRI();
+  const restePC = Math.max(0, CREDIT_PC - tPC);
+  const resteRI = Math.max(0, CREDIT_RI - tRI);
 
-  document.getElementById('alerte').style.display = p < 20 ? 'block' : 'none';
+  document.getElementById('alerte').style.display = p < 15 ? 'block' : 'none';
   document.getElementById('capital-final').textContent = fmt(cr);
   document.getElementById('capital-final').style.color = col;
-  document.getElementById('badge-date').textContent = new Date().toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' });
+  document.getElementById('badge-date').textContent = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});
 
-  // Crédit Parcours Confiance
-  document.getElementById('pc-mois-out').textContent = moisPC + ' mois';
+  // Sliders PC
+  document.getElementById('pc-out').textContent = moisPC+' mois';
   document.getElementById('slider-pc').value = moisPC;
-  document.getElementById('pc-bar').style.width = Math.round((tCreditPC / 8000) * 100) + '%';
-  document.getElementById('pc-info').textContent = 'Remboursé : ' + fmt(tCreditPC) + ' · Restant dû : ' + fmt(restePC);
+  document.getElementById('pc-bar').style.width = Math.round((tPC/CREDIT_PC)*100)+'%';
+  document.getElementById('pc-info').textContent = 'Remboursé : '+fmt(tPC)+' · Restant dû : '+fmt(restePC);
 
-  // Crédit Réseau Initiative
-  document.getElementById('ri-mois-out').textContent = moisRI + ' mois';
+  // Sliders RI
+  document.getElementById('ri-out').textContent = moisRI+' mois';
   document.getElementById('slider-ri').value = moisRI;
-  document.getElementById('ri-bar').style.width = Math.round((tCreditRI / 8000) * 100) + '%';
-  document.getElementById('ri-info').textContent = 'Remboursé : ' + fmt(tCreditRI) + ' · Restant dû : ' + fmt(resteRI);
+  document.getElementById('ri-bar').style.width = Math.round((tRI/CREDIT_RI)*100)+'%';
+  document.getElementById('ri-info').textContent = 'Remboursé : '+fmt(tRI)+' · Restant dû : '+fmt(resteRI);
 
+  // Camembert — 5 segments
   const segs = [
-    { label: 'Capital disponible', val: Math.max(0, cr), color: col },
+    { label: 'Capital perso dispo', val: Math.max(0, PERSO - tDep - tPC - tRI), color: '#2e7d32' },
+    { label: 'Crédit dispo (non utilisé)', val: Math.max(0, CREDIT_PC + CREDIT_RI - tDep - Math.max(0, tDep-(PERSO-tPC-tRI))), color: '#185fa5' },
     { label: 'Travaux', val: tTrav, color: '#b86e00' },
-    { label: 'Équipements', val: tEquip, color: '#185fa5' },
-    { label: 'Crédit Parcours Confiance', val: tCreditPC, color: '#c0392b' },
-    { label: 'Crédit Réseau Initiative', val: tCreditRI, color: '#8e3a8e' },
+    { label: 'Équipements', val: tEquip, color: '#1565c0' },
+    { label: 'Crédit PC remboursé', val: tPC, color: '#c0392b' },
+    { label: 'Crédit RI remboursé', val: tRI, color: '#7b2d8b' },
   ].filter(s => s.val > 0);
 
-  drawDonut(segs);
+  // Camembert simplifié — capital dispo vs dépenses vs crédits remboursés
+  const segsSimple = [
+    { label: 'Capital disponible', val: Math.max(0, cr), color: col },
+    { label: 'Travaux dépensés', val: tTrav, color: '#b86e00' },
+    { label: 'Équipements dépensés', val: tEquip, color: '#185fa5' },
+    { label: 'Crédit Parcours Confiance remb.', val: tPC, color: '#c0392b' },
+    { label: 'Crédit Réseau Initiative remb.', val: tRI, color: '#7b2d8b' },
+  ].filter(s => s.val > 0);
 
-  document.getElementById('legend').innerHTML = segs.map(s => `
+  drawDonut(segsSimple);
+
+  const totalSegs = segsSimple.reduce((s,sg)=>s+sg.val,0);
+  document.getElementById('legend').innerHTML = segsSimple.map(s => `
     <div class="legend-row">
       <span class="legend-dot" style="background:${s.color}"></span>
       <span class="legend-name">${s.label}</span>
       <span class="legend-val">${fmt(s.val)}</span>
+      <span class="legend-pct">${Math.round((s.val/totalSegs)*100)}%</span>
     </div>
   `).join('');
 
   document.getElementById('metrics').innerHTML = `
     <div class="metric">
-      <label>Capital initial</label>
-      <div class="val" style="color:#3a8c2f">${fmt(CAPITAL)}</div>
-      <div class="sub">au 15/04/2026</div>
+      <label>💰 Capital perso</label>
+      <div class="val" style="color:#f5c518">25 000 €</div>
+      <div class="sub">ton argent</div>
     </div>
     <div class="metric">
-      <label>Total dépenses</label>
-      <div class="val" style="color:#c0392b">${fmt(tDep)}</div>
-      <div class="sub">travaux + équipements</div>
+      <label>🏦 Total crédits obtenus</label>
+      <div class="val" style="color:var(--blue)">16 000 €</div>
+      <div class="sub">PC 8K + RI 8K</div>
     </div>
     <div class="metric">
-      <label>Crédit Parcours Confiance</label>
-      <div class="val" style="color:#c0392b">${fmt(tCreditPC)}</div>
-      <div class="sub">restant : ${fmt(restePC)}</div>
+      <label>🔨 Total dépensé</label>
+      <div class="val" style="color:var(--amber)">${fmt(tDep)}</div>
+      <div class="sub">${deps.length} dépense(s)</div>
     </div>
     <div class="metric">
-      <label>Crédit Réseau Initiative</label>
-      <div class="val" style="color:#8e3a8e">${fmt(tCreditRI)}</div>
-      <div class="sub">restant : ${fmt(resteRI)}</div>
+      <label>💳 Total crédits remboursés</label>
+      <div class="val" style="color:var(--red)">${fmt(tPC+tRI)}</div>
+      <div class="sub">PC: ${fmt(tPC)} · RI: ${fmt(tRI)}</div>
     </div>
   `;
 
   const list = document.getElementById('dep-list');
-  if (deps.length === 0) {
-    list.innerHTML = '<div class="empty-msg">Aucune dépense enregistrée.</div>';
-    return;
-  }
+  if (deps.length === 0) { list.innerHTML = '<div class="empty-msg">Aucune dépense enregistrée.</div>'; return; }
   list.innerHTML = deps.map(d => `
     <div class="dep-item">
-      <span class="cat-pill cat-${d.cat === 'edf' ? 'travaux' : d.cat}">${d.cat === 'travaux' || d.cat === 'edf' ? 'Travaux' : 'Équipement'}</span>
+      <span class="cat-pill cat-${d.cat}">${d.cat === 'travaux' ? 'Travaux' : 'Équipement'}</span>
       <span class="dep-name">${d.name}</span>
-      <span class="dep-amt">-${fmt(d.amt)}</span>
+      <span class="dep-amt">- ${fmt(d.amt)}</span>
       <button class="btn-del" onclick="delDep(${d.id})" title="Supprimer">✕</button>
     </div>
   `).join('');
